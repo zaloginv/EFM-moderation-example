@@ -1,0 +1,18 @@
+{% extends 'my_site/base.html' %}
+{% block title %} Главная страница {% endblock %}
+{% block content %}
+    <h2>Главная страница</h2>
+
+    {% if request.user.is_authenticated %}
+
+        Привет, пользователь. Нажми
+            <a href="{% url 'auth-app:logout' %}">сюда</a>, чтобы выйти из аккаунта
+
+    {% else %}
+        Ты не пользователь! Нажми
+            <a href="{% url 'auth-app:login' %}">сюда</a>, чтобы войти в аккаунт
+    {% endif %}
+
+    <br><a href="{% url 'blog-app:blog-list' %}">Перейти к списку блогов</a>
+
+{% endblock %}

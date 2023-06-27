@@ -1,0 +1,20 @@
+{% extends 'my_site/base.html' %}
+{% block title %} Блоги {% endblock %}
+{% block content %}
+    <h2>Список блогов</h2>
+    {% if blog_list %}
+
+            {% for blog in blog_list %}
+                <br>{{ blog.id }} | <a href="{% url 'blog-app:blog-list' %}{{blog.id}}">
+                {{ blog.title }}</a>
+            {% endfor %}
+
+    {% else %} Блогов нет
+    {% endif %}
+
+    <br><br><a href="{% url 'blog-app:blog-creation' %}"><input type="submit" value="Создать запись блога"></a>
+    <br>
+
+    <br><a href="{% url 'blog-app:main' %}">Вернуться на главную</a>
+
+{% endblock %}

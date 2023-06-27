@@ -1,0 +1,6 @@
+{% extends 'my_site/base.html' %}
+{% block title %} Страница выхода {% endblock %}
+{% block content %}
+Вы вышли из аккаунта
+    <a href="{% url 'main' %}">Вернуться на главную</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'my_site/base.html' %}
+{% block title %} Создание блога {% endblock %}
+{% block content %}
+
+    {% if blog_form %}
+        <form action="" method="post">
+            {{ blog_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Создать блог"></p>
+        </form>
+
+    {% else %}
+
+    <h2>{{ blog_result }}</h2>
+        <p><a href="{% url 'blog-app:blog-list' %}"><input type="submit" value="Перейти к списку блогов"></a></p>
+    {% endif %}
+{% endblock %}
