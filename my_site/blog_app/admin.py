@@ -1,3 +1,9 @@
 from django.contrib import admin
+from moderation.admin import ModerationAdmin
+from .models import Blog
 
-# Register your models here.
+
+@admin.register(Blog)
+class BlogAdmin(ModerationAdmin):
+    """Обычные админ настройки"""
+    pass

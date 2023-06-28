@@ -5,6 +5,9 @@
 <h2>{{ blog_detail.title }}</h2>
     <p>{{ blog_detail.body }}</p>
 
+        <p><a href="{% url 'blog-app:blog-redaction' blog_detail.id %}">
+            <input type="submit" value="Отредактировать блог"></a>
+        </p>
         <p><a href="{% url 'blog-app:blog-list' %}"><input type="submit" value="Вернуться к списку блогов"></a></p>
 
 {% endblock %}

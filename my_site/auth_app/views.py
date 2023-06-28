@@ -29,7 +29,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'auth_app/profile.html'
 
 
-class AuthLogoutView(LoginView):
+class AuthLogoutView(LogoutView):
     template_name = 'auth_app/logout.html'
 
 

@@ -1,0 +1,19 @@
+{% extends 'my_site/base.html' %}
+{% block title %} Редактирование блога {% endblock %}
+{% block content %}
+
+    {% if blog_form %}
+        <form action="" method="post">
+            {{ blog_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Редактировать блог"></p>
+        </form>
+
+    {% else %}
+
+    <h2>{{ blog_result }}</h2>
+
+    {% endif %}
+
+    <p><a href="{% url 'blog-app:blog-list' %}"><input type="submit" value="Вернуться к списку блогов"></a></p>
+{% endblock %}
