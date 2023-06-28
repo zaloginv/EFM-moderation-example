@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # доп. приложения джанго
+    'django.contrib.sites',
+    # пользовательские приложения
+    'moderation.apps.SimpleModerationConfig',
     # приложения проекта
     'auth_app',
     'blog_app',
@@ -127,3 +131,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'auth_app.User'
 LOGIN_REDIRECT_URL = reverse_lazy('auth-app:profile')
+SITE_ID = 1
