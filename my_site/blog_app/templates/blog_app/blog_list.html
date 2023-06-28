@@ -5,7 +5,8 @@
     {% if blog_list %}
 
             {% for blog in blog_list %}
-                <br>{{ blog.id }} | <a href="{% url 'blog-app:blog-list' %}{{blog.id}}">
+                  <br>{{ blog.id }}
+                | <a href="{% url 'blog-app:blog-detail' blog.id %}">
                 {{ blog.title }}</a>
             {% endfor %}
 

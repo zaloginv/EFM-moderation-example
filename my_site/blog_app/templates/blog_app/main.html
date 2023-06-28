@@ -5,7 +5,7 @@
 
     {% if request.user.is_authenticated %}
 
-        Привет, пользователь. Нажми
+        Привет, {{ request.user.username }}. Нажми
             <a href="{% url 'auth-app:logout' %}">сюда</a>, чтобы выйти из аккаунта
 
     {% else %}

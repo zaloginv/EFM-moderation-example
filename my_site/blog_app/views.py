@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.views import generic, View
 from .models import Blog
@@ -30,8 +29,22 @@ class BlogCreationView(View):
         return render(request=request, template_name='blog_app/blog_creation.html',
                       context={'blog_result': blog_result})
 
-#  TODO: создать представление редактирования блога
 
+class BlogRedactionView(View):
+
+    def get(self, request, pk, *args, **kwargs):
+        blog_db = Blog.objects.get(id=pk)
+        blog_form = BlogForm(initial={'title': blog_db.title, 'body': blog_db.body})
+        return render(request=request, template_name='blog_app/blog_redaction.html',
+                      context={'blog_form': blog_form})
+
+    def post(self, request, pk, *args, **kwargs):
+        blog_db = Blog.objects.get(id=pk)
+        blog = BlogForm(data=request.POST, instance=blog_db)
+        blog.save()
+        blog_result = 'Блог отредактирован'
+        return render(request=request, template_name='blog_app/blog_redaction.html',
+                      context={'blog_result': blog_result})
 
 class MainView(generic.TemplateView):
     template_name = 'blog_app/main.html'
