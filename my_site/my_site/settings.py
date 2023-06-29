@@ -132,3 +132,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth_app.User'
 LOGIN_REDIRECT_URL = reverse_lazy('auth-app:profile')
 SITE_ID = 1
+
+import datetime
+from django.utils.timezone import make_aware
+
+naive_datetime = datetime.datetime.now()
+aware_datetime = make_aware(naive_datetime)

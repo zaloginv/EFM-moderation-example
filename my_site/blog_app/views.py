@@ -18,12 +18,13 @@ class BlogCreationView(View):
 
     def get(self, request, *args, **kwargs):
         blog_form = BlogForm()
-
         return render(request=request, template_name='blog_app/blog_creation.html',
                       context={'blog_form': blog_form})
 
     def post(self, request, *args, **kwargs):
         new_blog = BlogForm(data=request.POST)
+        new_blog.save(commit=False)
+        new_blog.instance.author = request.user
         new_blog.save()
         blog_result = 'Блог создан'
         return render(request=request, template_name='blog_app/blog_creation.html',

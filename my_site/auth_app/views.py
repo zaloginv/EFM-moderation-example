@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
+from blog_app.models import Blog
 from .forms import RegisterForm
 
 
@@ -27,6 +28,12 @@ class RegisterView(CreateView):
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'auth_app/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = context['view'].request.user
+        context['blogs'] = Blog.objects.filter(author=user)
+        return context
 
 
 class AuthLogoutView(LogoutView):

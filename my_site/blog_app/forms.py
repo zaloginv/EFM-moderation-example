@@ -8,7 +8,7 @@ class BlogForm(forms.ModelForm):
     """
     class Meta:
         model = Blog
-        fields = ('title', 'body')
+        fields = ('title', 'body', 'communities')
         widgets = {
             'body': forms.Textarea(attrs={'cols': 70, 'rows': 20}),
         }

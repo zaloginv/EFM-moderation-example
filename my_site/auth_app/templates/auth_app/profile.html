@@ -7,9 +7,11 @@
 {% block content %}
 
     <h2>Профиль {{ request.user.username }}</h2>
+    {% for blog in blogs %}
+        <li>У вашего блога <b>{{ blog.title }}</b> статус <b>{{ blog.status }}</b></li>
+    {% endfor %}
 
-
-    Нажмите <a href="{% url 'auth-app:logout' %}"><b>здесь</b></a>, чтобы выйти из аккаунта
+    <br>Нажмите <a href="{% url 'auth-app:logout' %}"><b>здесь</b></a>, чтобы выйти из аккаунта
     <br> or <a href="{% url 'blog-app:main' %}"><b>здесь</b></a>, чтобы вернуться на главную страницу
 
 {% endblock %}
