@@ -48,5 +48,5 @@ python manage.py runserver
 git clone https://github.com/zaloginv/EFM-moderation-example.git
 cd EFM-moderation-example
 docker build --tag moder-exam-image -f Dockerfile .
-docker run --rm --name moder-exam-cont
+docker run --rm -p 80:80 --name moder-exam-cont moder-exam-image
 ```
