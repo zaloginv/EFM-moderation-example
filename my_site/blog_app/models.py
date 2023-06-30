@@ -53,6 +53,7 @@ class Blog(ModeratedModel):
         return self.title
 
 
+@receiver(signal=signals.pre_moderation)
 @receiver(signal=signals.post_moderation)
 def status_change(sender, instance, status, **kwargs):
     """

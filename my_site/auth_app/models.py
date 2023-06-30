@@ -54,7 +54,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     Модель пользователя. Поле USERNAME_FIELD должно быть явно указано
     """
     username = models.CharField(db_index=True, max_length=255, unique=True)
-    email = models.EmailField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     USERNAME_FIELD = "username"

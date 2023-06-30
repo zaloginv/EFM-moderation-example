@@ -7,6 +7,7 @@
 
         Привет, {{ request.user.username }}. Нажми
             <a href="{% url 'auth-app:logout' %}">сюда</a>, чтобы выйти из аккаунта
+            <br>или <a href="{% url 'auth-app:profile' %}">сюда</a>, чтобы посмотреть свой профиль
 
     {% else %}
         Ты не пользователь! Нажми
