@@ -1,7 +1,10 @@
 ## Описание
-Проект разделен на два приложения:
-- авторизация
-- блоги
+**Задача**: Протестировать библиотеку django-moderation.
+
+**Способ решения**: Веб-приложение с авторизацией, с возможностью пользователей размещать блоги и редактировать их; 
+при размещении блога создается дополнительный объект, который проверяет модератор. При одобрении/отказе в размещении
+пользователю видно соответствующее сообщение в своем личном профиле. При этом, если пользователь обновляет размещенный 
+блог, то до проверки модератором, показывается старая информация (блог не убирается из общего списка).
 
 ### Done
 - регистрация пользователя
@@ -32,21 +35,20 @@
 
 
 ## Запуск проекта
-Без докера:
-
-```shell
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py fill_db
-python manage.py runserver
-```
-
-С докером:
 
 ```shell
 git clone https://github.com/zaloginv/EFM-moderation-example.git
 cd EFM-moderation-example
 docker build --tag moder-exam-image -f Dockerfile .
-docker run --rm -p 80:80 --name moder-exam-cont moder-exam-image
+docker-compose up
 ```
+
+### 
+Данные для входа (username/password):
+- vasyan/vasyan (обычный пользователь, может размещать блоги)
+- moder/moder (модератор - может менять статус модерируемого объекта через django-admin; но не более)
+- admin/admin (superuser)
+
+Адреса:
+- главная страница: http://localhost:8000
+- админка: http://localhost:8000/admin
